@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_users",
+  "info": {
+    "singularName": "chat-user",
+    "pluralName": "chat-users",
+    "displayName": "chat_user",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "in_search": {
+      "type": "boolean",
+      "default": true
+    },
+    "ageRange": {
+      "type": "string"
+    },
+    "interes": {
+      "type": "enumeration",
+      "enum": [
+        "Флирт",
+        "Поиск друга",
+        "Ролка"
+      ]
+    }
+  }
+}
