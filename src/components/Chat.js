@@ -64,7 +64,7 @@ const Chat = ({ user, partner, socket }) => {
     return (
         <div className="w-full mx-auto bg-white shadow-md rounded-lg p-8">
             <div className='flex items-center justify-between p-5'>
-                <h3 className="text-xl font-bold mb-4">Диалог начсался</h3>
+                <h3 className="text-xl font-bold mb-4 text-red-500 uppercase">Диалог начался</h3>
                 <button
                     onClick={handleDisconnect}
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
