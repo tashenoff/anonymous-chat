@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ReactComponent as Logo } from '../logo.svg';
 import backgroundImage from '../../src/bg.jpeg'; // Импортируйте изображение
 
 const UserForm = ({ onSearch }) => {
