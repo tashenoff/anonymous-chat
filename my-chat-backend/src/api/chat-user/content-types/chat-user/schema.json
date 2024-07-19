@@ -30,13 +30,8 @@
     "ageRange": {
       "type": "string"
     },
-    "interes": {
-      "type": "enumeration",
-      "enum": [
-        "Флирт",
-        "Поиск друга",
-        "Ролка"
-      ]
+    "interests": {
+      "type": "string"
     }
   }
 }

@@ -415,13 +415,7 @@ export interface ApiChatUserChatUser extends Schema.CollectionType {
     is_active: Attribute.Boolean & Attribute.DefaultTo<true>;
     in_search: Attribute.Boolean & Attribute.DefaultTo<true>;
     ageRange: Attribute.String;
-    interes: Attribute.Enumeration<
-      [
-        '\u0424\u043B\u0438\u0440\u0442',
-        '\u041F\u043E\u0438\u0441\u043A \u0434\u0440\u0443\u0433\u0430',
-        '\u0420\u043E\u043B\u043A\u0430'
-      ]
-    >;
+    interests: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
