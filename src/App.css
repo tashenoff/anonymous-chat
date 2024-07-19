@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.typing-indicator {
+    font-style: italic;
+    color: black;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+  
