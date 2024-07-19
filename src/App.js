@@ -4,6 +4,7 @@ import UserForm from './components/UserForm';
 import Chat from './components/Chat';
 import PuffLoader from 'react-spinners/PuffLoader';
 import './index.css';
+import backgroundImage from '../src/bg.jpeg'; // Импортируйте изображение
 
 const socket = io('http://localhost:4000'); // Замените на URL вашего сервера Socket.IO
 
@@ -74,11 +75,20 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-gray-900 h-screen flex items-center justify-center">
+    <div className="App px-5  bg-gray-900 h-screen flex items-center justify-center"
+    
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh' // чтобы фон занимал всю высоту экрана
+  }}
+
+    >
       {!user ? (
         <UserForm onSearch={handleSearch} />
       ) : !partner ? (
-        <div className="flex bg-white flex-col items-center justify-center p-5 rounded-lg">
+        <div className="flex bg-white flex-col items-center justify-center  rounded-lg ">
           <PuffLoader size={20} color="#3B82F6" loading={true} />
           <p className="mt-4 text-blue-500">Searching for a partner...</p>
           <button
