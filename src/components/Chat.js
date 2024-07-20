@@ -129,16 +129,30 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
     setShowEmojiPicker(false);
   };
 
+  const handleFindAnother = () => {
+    // Логика для поиска другого собеседника
+    onDisconnect(); // Передайте логику поиска другого собеседника здесь
+  };
+
   return (
-    <div className="w-full mx-auto bg-gray-800 text-white shadow-md rounded-lg p-8">
+    <div className="relative w-full mx-auto p-8 bg-gray-800 text-white shadow-md rounded-lg backdrop-blur-sm bg-opacity-30">
       <div className='flex items-center justify-between p-5'>
         <h3 className="text-xl font-bold mb-4 text-red-400 uppercase">Chat Started</h3>
-        <button
-          onClick={handleDisconnect}
-          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-        >
-          Disconnect
-        </button>
+        {(isPartnerDisconnected || isDisconnected) ? (
+          <button
+            onClick={handleFindAnother}
+            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+          >
+            Find Another
+          </button>
+        ) : (
+          <button
+            onClick={handleDisconnect}
+            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+          >
+            Disconnect
+          </button>
+        )}
       </div>
 
       <div className="h-72 overflow-y-scroll border border-gray-700 p-4 mb-4 rounded bg-gray-900">
@@ -193,7 +207,7 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
 
       {isDisconnected && (
         <div className="mt-4 text-red-400">
-          You have been disconnected. <button onClick={handleDisconnect} className="underline">Reconnect</button>
+          You have been disconnected. <button onClick={handleFindAnother} className="underline">Reconnect</button>
         </div>
       )}
 
