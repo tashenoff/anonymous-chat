@@ -22,9 +22,6 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false); // Состояние для модального окна
 
-  const messageInputRef = useRef(null);
-  const emojiPickerRef = useRef(null);
-
   useEffect(() => {
     socket.on('message', (message) => {
       if (!isDisconnected) {
@@ -135,7 +132,7 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
   };
 
   return (
-    <div className="relative w-full mx-auto p-8 bg-gray-800 text-white shadow-md rounded-lg backdrop-blur-sm bg-opacity-30">
+    <div className="relative w-full mx-auto p-8 bg-gray-800 text-white shadow-md rounded-lg backdrop-blur-xl bg-opacity-30">
       <div className='flex items-center justify-between p-5'>
         <h3 className="text-xl font-bold mb-4 text-red-400 uppercase">Chat Started</h3>
         {(isPartnerDisconnected || isDisconnected) ? (
@@ -148,9 +145,9 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
         ) : (
           <button
             onClick={handleDisconnect}
-            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+            className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700"
           >
-            Disconnect
+            отключиться
           </button>
         )}
       </div>
