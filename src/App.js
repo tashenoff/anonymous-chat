@@ -64,7 +64,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App px-5 bg-gray-900 h-screen flex items-center justify-center"
+    <div className="App lg:px-5 px-1 bg-gray-900 h-screen flex items-center justify-center"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -83,7 +83,7 @@ function App() {
           >Cancel Search</button>
         </div>
       ) : (
-        <div className='w-full container mx-auto mx-10'>
+        <div className='w-full container mx-auto'>
           <Chat user={user} partner={partner} socket={socket} onDisconnect={handleDisconnect} />
         </div>
       )}
