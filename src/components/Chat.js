@@ -141,7 +141,7 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
     };
 
     return (
-        <div className="relative w-full mx-auto p-1 bg-gray-800 text-white shadow-md rounded-lg backdrop-blur-xl bg-opacity-30">
+        <div className="relative w-full mx-auto my-10 p-1 bg-gray-800 text-white shadow-md rounded-lg backdrop-blur-xl bg-opacity-30">
             <div className='flex items-center justify-between p-5'>
                 <h3 className="text-xl font-bold mb-4 text-red-400 uppercase">Собеседник найден</h3>
                 {(isPartnerDisconnected || isDisconnected) ? (
@@ -165,7 +165,7 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
                 {messages.map((msg, index) => (
                     <div
                         key={index}
-                        className={`mb-2 ${msg.sender === user ? 'bg-blue-500' : 'bg-gray-700'} p-2 rounded-md inline-block`}
+                        className={`mb-2 ${msg.sender === user ? 'self-end bg-blue-500' : 'self-start bg-gray-700'} p-2 rounded-md inline-block`}
                         style={{
                             display: 'inline-block',
                             maxWidth: 'fit-content', // Сообщение выделяется только по своему содержимому

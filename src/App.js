@@ -69,7 +69,7 @@ function App() {
     <div className='w-full flex flex-col   '>
       <Header />
 
-      <div className="App lg:px-5 px-1 bg-gray-900  flex items-center justify-center"
+      <div className="App bg-gray-900  flex items-center justify-center"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
