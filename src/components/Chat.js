@@ -161,7 +161,7 @@ const Chat = ({ user, partner, socket, onDisconnect }) => {
                 )}
             </div>
 
-            <div className="h-72 overflow-y-scroll border border-gray-700 p-4 mb-4 rounded bg-gray-900 flex flex-col">
+            <div className="h-screen overflow-y-scroll border border-gray-700 p-4 backdrop-blur-xl bg-opacity-90 mb-4 rounded bg-gray-900 flex flex-col">
                 {messages.map((msg, index) => (
                     <div
                         key={index}
