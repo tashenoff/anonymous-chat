@@ -6,8 +6,8 @@ import PuffLoader from 'react-spinners/PuffLoader';
 import './index.css';
 import backgroundImage from '../src/bg.jpeg';
 
-
-const socket = io('https://cec2-145-249-246-38.ngrok-free.app'); // Замените на URL вашего сервера Socket.IO
+// Использование переменной окружения для URL сервера Socket.IO
+const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   const [user, setUser] = useState(null);
@@ -65,40 +65,32 @@ function App() {
   }, []);
 
   return (
-   
-      <div className="App min-h-screen flex flex-col bg-gray-900 overflow-hidden"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          minHeight: '100vh'
-        }}>
-
-
-        {!user ? (
-          <UserForm onSearch={handleSearch} />
-        ) : !partner ? (
-          <div className="flex bg-white flex-col items-center justify-center rounded-lg  ">
-            <PuffLoader size={20} color="#3B82F6" loading={true} />
-            <p className="mt-4 text-blue-500">Searching for a partner...</p>
-            <button
-              onClick={handleCancelSearch}
-              className="mt-4 bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >Cancel Search</button>
-          </div>
-        ) : (
-          <div className='w-full h-full '>
-            <Chat user={user} partner={partner} socket={socket} onDisconnect={handleDisconnect} />
-           
-          </div>
-          
-        )}
-      
-        
-      </div>
- 
-    
-   
+    <div className="App min-h-screen flex flex-col bg-gray-900 overflow-hidden"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh'
+      }}>
+      {!user ? (
+        <UserForm onSearch={handleSearch} />
+      ) : !partner ? (
+        <div className="flex bg-white flex-col items-center justify-center rounded-lg">
+          <PuffLoader size={20} color="#3B82F6" loading={true} />
+          <p className="mt-4 text-blue-500">Searching for a partner...</p>
+          <button
+            onClick={handleCancelSearch}
+            className="mt-4 bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Cancel Search
+          </button>
+        </div>
+      ) : (
+        <div className='w-full h-full'>
+          <Chat user={user} partner={partner} socket={socket} onDisconnect={handleDisconnect} />
+        </div>
+      )}
+    </div>
   );
 }
 

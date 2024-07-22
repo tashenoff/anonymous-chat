@@ -1,4 +1,5 @@
-require('dotenv').config(); // Подключение dotenv в начале файла
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const express = require('express');
 const http = require('http');
@@ -257,7 +258,7 @@ let users = []; // Массив пользователей
     });
   });
 
-  server.listen(process.env.PORT || 4000, () => {
-    console.log(`Server is running on port ${process.env.PORT || 4000}`);
+  server.listen(process.env.SERVER_PORT || 4000, () => {
+    console.log(`Server is running on port ${process.env.SERVER_PORT || 4000}`);
   });
 })();
