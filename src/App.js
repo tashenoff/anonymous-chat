@@ -5,8 +5,7 @@ import Chat from './components/Chat';
 import PuffLoader from 'react-spinners/PuffLoader';
 import './index.css';
 import backgroundImage from '../src/bg.jpeg';
-import Header from './components/Header';
-import Footer from './components/Footer';
+
 
 const socket = io('https://35fc-145-249-246-38.ngrok-free.app'); // Замените на URL вашего сервера Socket.IO
 

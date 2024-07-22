@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-alex.netlify.app",
     methods: ["GET", "POST"]
   }
 });
@@ -264,6 +264,6 @@ let users = []; // Массив пользователей
   });
 
   server.listen(4000, () => {
-    console.log('Server is running on port 000');
+    console.log('Server is running on port 4000');
   });
 })();
