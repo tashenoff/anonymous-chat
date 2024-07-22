@@ -1,3 +1,5 @@
+require('dotenv').config(); // Подключение dotenv в начале файла
+
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -9,7 +11,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://chat-alex.netlify.app",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"]
   }
 });
@@ -31,7 +33,7 @@ let users = []; // Массив пользователей
       }
 
       // Сохранение пользователя в Strapi
-      const response = await fetch('http://localhost:1337/api/chat-users', {
+      const response = await fetch(`${process.env.NGROK_URL}/api/chat-users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +86,7 @@ let users = []; // Массив пользователей
       console.log('Search criteria:', criteria);
 
       // Получение всех пользователей из базы данных, кроме текущего пользователя
-      const response = await fetch('http://localhost:1337/api/chat-users');
+      const response = await fetch(`${process.env.NGROK_URL}/api/chat-users`);
       const allUsers = await response.json();
 
       if (!allUsers.data) {
@@ -142,7 +144,7 @@ let users = []; // Массив пользователей
 
           const updatePromises = [user.userId, receiver.id].map(async userId => {
             try {
-              const updateUserResponse = await fetch(`http://localhost:1337/api/chat-users/${userId}`, {
+              const updateUserResponse = await fetch(`${process.env.NGROK_URL}/api/chat-users/${userId}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -187,7 +189,7 @@ let users = []; // Массив пользователей
     socket.on('message', async (data) => {
       console.log('Message received:', data);
       // Сохранение сообщения в Strapi
-      await fetch('http://localhost:1337/api/chats', {
+      await fetch(`${process.env.NGROK_URL}/api/chats`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -230,7 +232,7 @@ let users = []; // Массив пользователей
 
         // Удаляем пользователя из базы данных Strapi
         try {
-          const response = await fetch(`http://localhost:1337/api/chat-users/${disconnectedUser.userId}`, {
+          const response = await fetch(`${process.env.NGROK_URL}/api/chat-users/${disconnectedUser.userId}`, {
             method: 'DELETE',
           });
           if (!response.ok) {
@@ -247,23 +249,15 @@ let users = []; // Массив пользователей
         if (partnerSocketId) {
           handlePartnerDisconnect(partnerSocketId);
         }
-      } else {
-        console.log('User not found in local memory');
       }
     };
 
-    // Обработчик отключения пользователя через интерфейс (userDisconnect)
     socket.on('disconnect', () => {
       handleUserDisconnect(socket.id);
     });
-
-    // Обработчик отключения партнера через интерфейс (partnerDisconnect)
-    socket.on('partnerDisconnect', (partnerSocketId) => {
-      handlePartnerDisconnect(partnerSocketId);
-    });
   });
 
-  server.listen(4000, () => {
-    console.log('Server is running on port 4000');
+  server.listen(process.env.PORT || 4000, () => {
+    console.log(`Server is running on port ${process.env.PORT || 4000}`);
   });
 })();
