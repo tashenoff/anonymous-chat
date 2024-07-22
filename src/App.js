@@ -8,7 +8,7 @@ import backgroundImage from '../src/bg.jpeg';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-const socket = io('http://localhost:4000'); // Замените на URL вашего сервера Socket.IO
+const socket = io('https://35fc-145-249-246-38.ngrok-free.app'); // Замените на URL вашего сервера Socket.IO
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,20 +66,20 @@ function App() {
   }, []);
 
   return (
-    <div className='w-full flex flex-col   '>
-      <Header />
-
-      <div className="App bg-gray-900  flex items-center justify-center"
+   
+      <div className="App min-h-screen flex flex-col bg-gray-900 overflow-hidden"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '100vh'
         }}>
+
+
         {!user ? (
           <UserForm onSearch={handleSearch} />
         ) : !partner ? (
-          <div className="flex bg-white flex-col items-center justify-center rounded-lg ">
+          <div className="flex bg-white flex-col items-center justify-center rounded-lg  ">
             <PuffLoader size={20} color="#3B82F6" loading={true} />
             <p className="mt-4 text-blue-500">Searching for a partner...</p>
             <button
@@ -88,17 +88,18 @@ function App() {
             >Cancel Search</button>
           </div>
         ) : (
-          <div className='w-full'>
+          <div className='w-full h-full '>
             <Chat user={user} partner={partner} socket={socket} onDisconnect={handleDisconnect} />
            
           </div>
           
         )}
+      
         
       </div>
-      <Footer />
+ 
     
-    </div>
+   
   );
 }
 
