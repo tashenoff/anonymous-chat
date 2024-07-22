@@ -6,6 +6,12 @@ import PuffLoader from 'react-spinners/PuffLoader';
 import './index.css';
 import backgroundImage from '../src/bg.jpeg';
 
+// Инициализация Eruda в режиме разработки
+if (process.env.NODE_ENV === 'development') {
+  const eruda = require('eruda');
+  eruda.init();
+}
+
 // Использование переменной окружения для URL сервера Socket.IO
 const socket = io(process.env.REACT_APP_SOCKET_URL);
 
