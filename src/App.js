@@ -7,7 +7,7 @@ import './index.css';
 import backgroundImage from '../src/bg.jpeg';
 
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'Production') {
   const eruda = require('eruda');
   eruda.init(); 
 }
