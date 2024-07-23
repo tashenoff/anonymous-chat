@@ -6,7 +6,7 @@ const defaultName = 'Собеседник';
 
 // Функция для определения цвета имени
 const getNameColor = (gender) => {
-    return gender === 'male' ? 'text-blue-400' : 'text-pink-400';
+    return gender === 'male' ? 'text-blue-300' : 'text-pink-400';
 };
 
 // Пример массива смайлов
