@@ -7,7 +7,7 @@ import './index.css';
 import backgroundImage from '../src/bg.jpeg';
 
 
-// eruda
+
   const eruda = require('eruda');
   eruda.init(); 
 

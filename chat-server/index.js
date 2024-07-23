@@ -12,7 +12,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: "https://chat-alex.netlify.app",
     methods: ["GET", "POST"]
   }
 });
